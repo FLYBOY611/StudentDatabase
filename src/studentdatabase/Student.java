@@ -7,7 +7,8 @@ package studentdatabase;
 //We want a student constructor so we can make "students" from our data file.
 public class Student {
     int StudentNumber;
-    String StudentName;
+    String FirstName;
+    String LastName;
     int PhoneNumber; 
     String Gender;
     int Classification; //What year they are
