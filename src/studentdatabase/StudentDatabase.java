@@ -47,8 +47,7 @@ public class StudentDatabase {
         //STUDENT NUMBER    
             //The first 5 spaces are student ID, no exceptions
             //Anything less we have an error (ADD ERROR CHECING)
-            while(Character.isDigit(DataLine.charAt(i)) == true
-                    && i<=4){
+            while(i<=4){
                 ID = ID + Character.toString(DataLine.charAt(i));
             i++;
             }
@@ -60,15 +59,10 @@ public class StudentDatabase {
         //FIRST NAME    
             //As long as we see characters we have the first name
             //UNTIL we see a second uppercase letter or hit column 14
-            while(Character.isLetter(DataLine.charAt(i)) == true
-                    && i<=14){
+            while(i<=14){
               FName = FName + Character.toString(DataLine.charAt(i));
               
-              //If the next character is Uppercase we've hit the last name
-              //Signal a break
-              if(Character.isUpperCase(DataLine.charAt(i+1))==true){
-                  break;
-              }
+              
               i++;
             }
             newKid.FirstName = FName;
@@ -76,15 +70,10 @@ public class StudentDatabase {
         //LAST NAME    
             //As long as we see characters we have the last name
             //UNTIL we see a second uppercase letter or hit column 24
-            while(Character.isLetter(DataLine.charAt(i)) == true
-                    && i<=24){
+            while(i<=24){
               LName = LName + Character.toString(DataLine.charAt(i));
               
-              //If the next character is Uppercase we've hit the last name
-              //Signal a break
-              if(Character.isDigit(DataLine.charAt(i+1))==true){
-                  break;
-              }
+
               i++;
             }
             newKid.LastName = LName;
@@ -152,3 +141,12 @@ public class StudentDatabase {
             
             //String everything = sb.toString();
             //catchit = DataLine;
+
+//while(Character.isLetter(DataLine.charAt(i)) == true
+     //               && i<=14)
+
+////If the next character is Uppercase we've hit the last name
+              //Signal a break
+             // if(Character.isUpperCase(DataLine.charAt(i+1))==true){
+               //   break;
+             // }
