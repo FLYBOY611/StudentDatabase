@@ -6,14 +6,17 @@ package studentdatabase;
 
 //An ADT for all the actions our program can do with the data
 public interface DatabaseADT {
-    
-    //Compute the average GPA of all students
-    public int AverageGPA(int GPA);
-    
-    //Display all students sorted by first name
-    public String DisplayFirstName(String names);
-    
+  
     //Display all students sorted by last name
-    public String DisplayLastName(String names);
+    public String DisplayList(ListOfStudents stuff);
+    
+    //Sort by student number
+    public String SortByNumber(ListOfStudents stuff);
+    
+    //Sort by last name
+    public String SortLastName(ListOfStudents stuff);
+    
+    //Find the average GPA for all students with a specified major
+    public String GPAbyMajor(ListOfStudents stuff);
     
 }
