@@ -5,7 +5,8 @@
 package studentdatabase;
 
 //We want a student constructor so we can make "students" from our data file.
-public class Student {
+//I think we need this to implements Comparable<Student>
+public class Student  {
     int StudentNumber;
     String FirstName;
     String LastName;

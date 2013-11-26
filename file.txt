@@ -1,2 +1,5 @@
 28645John      Smith     555-468-3232M2A3.87
-29941Lisa      Kell      555-357-9909F1B4.86
+29941Lisa      Kell      555-357-9909F1B4.00
+24591Zev       Goldstein 555-323-6713M4A3.77
+26688Calvin    Cooper    202-462-2800M1C2.17
+24571Jane      Doe       706-600-4351F3B3.50
