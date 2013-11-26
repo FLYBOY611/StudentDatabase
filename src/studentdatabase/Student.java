@@ -9,11 +9,15 @@ public class Student {
     int StudentNumber;
     String FirstName;
     String LastName;
-    int PhoneNumber; 
+    String PhoneNumber; 
     String Gender;
     int Classification; //What year they are
     char Major; //Maybe have that be a string?
     double GPA; //Will make things easy when we have to compare them
     
     //We might want Phone# as String to deal with the dashes. TBD
+    
+     public String toString(){
+        return FirstName + " " + LastName;
+    }
 }

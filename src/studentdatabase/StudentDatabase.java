@@ -33,23 +33,30 @@ public class StudentDatabase {
         BufferedReader br = new BufferedReader(new FileReader(selector));
         String catchit;     
         try {
+            
             StringBuilder sb = new StringBuilder();
             String DataLine = br.readLine();
+            
+            while (DataLine != null) {
             
             //We make a new student and give ourselves some variables 
             //to work with
             Student newKid = new Student();
+            int i = 0;
             String ID = "";
             String FName = "";
-            String LName = "";
-            int i = 0;
+            String LName = "";           
+            String PNumb = "";
+            String Gend = "";
+            String StuClass = "";
+            char Maj;
+            String CGPA = "";
             
         //STUDENT NUMBER    
-            //The first 5 spaces are student ID, no exceptions
-            //Anything less we have an error (ADD ERROR CHECING)
+            //Always the first five digits
             while(i<=4){
                 ID = ID + Character.toString(DataLine.charAt(i));
-            i++;
+                i++;
             }
             //Set the NewKids student number
             newKid.StudentNumber = Integer.parseInt(ID);
@@ -57,31 +64,63 @@ public class StudentDatabase {
             
             
         //FIRST NAME    
-            //As long as we see characters we have the first name
-            //UNTIL we see a second uppercase letter or hit column 14
+            //The next 10 characters, might include white space
             while(i<=14){
-              FName = FName + Character.toString(DataLine.charAt(i));
-              
-              
+              FName = FName + Character.toString(DataLine.charAt(i));             
               i++;
             }
             newKid.FirstName = FName;
             
         //LAST NAME    
-            //As long as we see characters we have the last name
-            //UNTIL we see a second uppercase letter or hit column 24
+            //The next 10 characters, also might include white space
             while(i<=24){
-              LName = LName + Character.toString(DataLine.charAt(i));
-              
-
+              LName = LName + Character.toString(DataLine.charAt(i));             
               i++;
             }
             newKid.LastName = LName;
    
+        //PHONE NUMBER
+            //The next 12 spaces so we can have dashes!
+            while(i<=36){
+              PNumb = PNumb + Character.toString(DataLine.charAt(i));             
+              i++;
+            }
+            newKid.PhoneNumber = PNumb;
+            
+            //GENDER
+            //Is exactly one space, doesn't need a loop            
+              Gend = Character.toString(DataLine.charAt(i));             
+              i++;      
+              newKid.Gender = Gend;
+              
+            //CLASSIFICATION
+            //Also just one space, no loop necessary           
+              StuClass = Character.toString(DataLine.charAt(i));             
+              i++;      
+              newKid.Classification = Integer.parseInt(StuClass);
+              
+            //Major
+            //Also just one space, no loop necessary           
+              newKid.Major = DataLine.charAt(i);              
+              i++;      
+              
+         //GPA
+            //The last 4 spaces are for GPA
+            while(i<=43){
+              CGPA = CGPA + Character.toString(DataLine.charAt(i));             
+              i++;
+            }
+            newKid.GPA = Double.parseDouble(CGPA);
 
             //At the end, we add the newKid
             FullList.listofsets.add(newKid);
             
+            sb.append('\n'); 
+            sb.append(DataLine);
+            
+            DataLine = br.readLine();
+            
+            }   
         } finally {         
             br.close();
         }
@@ -90,9 +129,16 @@ public class StudentDatabase {
         System.out.println("Reading was successful\r");
         
         //Just print out the student number in that file
-        System.out.println(FullList.listofsets.get(0).StudentNumber);
+        //System.out.println(FullList.listofsets.get(0).StudentNumber);
         System.out.println(FullList.listofsets.get(0).FirstName);
-        System.out.println(FullList.listofsets.get(0).LastName);
+        System.out.println(FullList.listofsets.get(1).FirstName);
+        //System.out.println(FullList.listofsets.get(0).LastName);
+        //System.out.println(FullList.listofsets.get(0).PhoneNumber);
+        //System.out.println(FullList.listofsets.get(0).Gender);
+        //System.out.println(FullList.listofsets.get(0).Classification);
+        //System.out.println(FullList.listofsets.get(0).Major);
+        //System.out.println(FullList.listofsets.get(0).GPA);
+        //System.out.println(FullList.listofsets.get(1).StudentNumber);
 
     }
 }

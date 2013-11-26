@@ -19,4 +19,7 @@ public interface DatabaseADT {
     //Find the average GPA for all students with a specified major
     public String GPAbyMajor(ListOfStudents stuff);
     
+    //Find by student number
+    public String FindByNumber(ListOfStudents stuff, int studentNumber);
+    
 }
