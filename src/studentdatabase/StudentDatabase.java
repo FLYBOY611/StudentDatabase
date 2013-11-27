@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class StudentDatabase {
@@ -132,7 +133,7 @@ public class StudentDatabase {
         //System.out.println(FullList.listofsets.get(0).StudentNumber);
         System.out.println(FullList.listofsets.get(0).FirstName);
         System.out.println(FullList.listofsets.get(1).FirstName);
-        System.out.println(FullList.listofsets.get(4).FirstName);
+        //System.out.println(FullList.listofsets.get(4).FirstName);
         //System.out.println(FullList.listofsets.get(0).LastName);
         //System.out.println(FullList.listofsets.get(0).PhoneNumber);
         //System.out.println(FullList.listofsets.get(0).Gender);
@@ -148,6 +149,7 @@ public class StudentDatabase {
         //Kick off the switch statement!
         Scanner input2 = new Scanner(System.in);
         Scanner input3 = new Scanner(System.in);
+        Scanner input4 = new Scanner(System.in);
         Menus WorkMenus = new Menus();
         int switcher = 0;
 
@@ -159,6 +161,14 @@ public class StudentDatabase {
             switch (switcher) {
                 //LOCATE A STUDENT BY STUDENT NUMBER
                 case 1:
+                    System.out.println("What student ID do you want to search"
+                            + " for?");
+                    int IN = input4.nextInt();
+                    Student temp = FullList.GetWithId(IN);
+                    
+                    System.out.print(temp.StudentNumber);
+                    System.out.print(temp.FirstName);
+                    System.out.print(temp.LastName);
                     break;
 
                 //PRINT OUT ALL STUDENTS BY CLASS 
@@ -171,26 +181,48 @@ public class StudentDatabase {
 
                 //DISPLAY ALL STUDENTS BY LAST NAME
                 case 4:
-                    //Collections.sort(FullList.listofsets, FullList.listofsets.get(0).LastName);
-                    //Collections.sort(FullList.listofsets);
+                    
+                    Collections.sort(FullList.listofsets, Student.Comparators.NAME);
+                    
+                    System.out.println("Number    Name     Phone Number"
+                            + "    Gender     Class     Major     GPA");
+                    
+                    for(int i = 0; i<FullList.listofsets.size(); i++){
+                        System.out.print(FullList.listofsets.get(i).StudentNumber
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).FirstName);
+                        System.out.print(FullList.listofsets.get(i).LastName);
+                        System.out.print(FullList.listofsets.get(i).PhoneNumber
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).Gender
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).Classification
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).Major
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).GPA);
+                        System.out.println();
+                        
+                    }
+                    
                     break;
 
                 //FIND THE AVERAGE GPA FOR ALL STUDENTS WITH A SPECIFIC MAJOR
                 case 5:
                     System.out.println("What major would you like to "
                             + "analyze?");
-                    
+
                     //We need to flip it around to get a char 
                     String Major = input3.nextLine();
                     char MajorChar = Major.charAt(0);
-                    
+
                     int count = 0;
                     double GPAcombine = 0;
-                    
+
                     //Iterate through our students
-                    for(int i = 0; i<FullList.listofsets.size(); i++){
+                    for (int i = 0; i < FullList.listofsets.size(); i++) {
                         //If the major is detected, grab that GPA and count up
-                        if(FullList.listofsets.get(i).Major == MajorChar){
+                        if (FullList.listofsets.get(i).Major == MajorChar) {
                             GPAcombine += FullList.listofsets.get(i).GPA;
                             count++;
                         }
@@ -198,8 +230,8 @@ public class StudentDatabase {
                     System.out.println("There are " + count + " students "
                             + "with that major");
                     System.out.println("The average GPA is:"
-                            + " " + GPAcombine/count + "\r");
-                    
+                            + " " + GPAcombine / count + "\r");
+
                     break;
 
                 //EXIT THE PROGRAM
@@ -215,6 +247,8 @@ public class StudentDatabase {
             }
         }
     }
+
+
 }
 //SCRAP CODE
     /*
