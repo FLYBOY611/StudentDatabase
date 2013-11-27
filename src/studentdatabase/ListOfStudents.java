@@ -18,7 +18,7 @@ public class ListOfStudents {
         Collections.sort(listofsets, Student.Comparators.STUDENT_NUMBER);
         
         int front = 0;
-        int end = listofsets.size();
+        int end = listofsets.size()-1;
         
         while(true){
             
@@ -30,22 +30,23 @@ public class ListOfStudents {
             if(StudentNum == temp.StudentNumber){
                 return temp;
             }
-            if(middle == front && StudentNum != temp.StudentNumber){
+            /*
+            if(middle == front && middle == end && StudentNum != temp.StudentNumber){
                 System.out.println("That record does not exist!");
                 return null;
-            }
+            }*/
             else if (StudentNum > temp.StudentNumber){
                 front = middle+1;
             }else if (StudentNum < temp.StudentNumber){
                 end = middle-1;
             }
             
-            
-            
+            if(end < front){
+                System.out.println("That record does not exist!");
+                return null;
+            }
         }
-        
     }
-    
 }
 
 
