@@ -166,9 +166,15 @@ public class StudentDatabase {
                     int IN = input4.nextInt();
                     Student temp = FullList.GetWithId(IN);
                     
+                    System.out.println("Number    Name     Phone Number"
+                            + "    Gender     Class     Major     GPA");
                     System.out.print(temp.StudentNumber);
                     System.out.print(temp.FirstName);
                     System.out.print(temp.LastName);
+                    System.out.print(temp.PhoneNumber);
+                    System.out.print(temp.Gender);
+                    System.out.print(temp.Major);
+                    System.out.print(temp.GPA);
                     break;
 
                 //PRINT OUT ALL STUDENTS BY CLASS 
