@@ -17,9 +17,11 @@ public class StudentDatabase {
                 + "from a text file and manipulate it in many ways.");
         System.out.println("Please be sure that the student information "
                 + "file is in the same directory as this program.");
-        System.out.println("Let's start by reading in that file!\r");
+        System.out.println("Let's start by reading in that file!");
+        System.out.println("(Hint: the included file is file.txt)\r");
         System.out.println("Please enter the full name of the "
                 + "student information file:");
+
 
         ListOfStudents FullList = new ListOfStudents();
 
@@ -129,27 +131,14 @@ public class StudentDatabase {
 
         System.out.println("Reading was successful!\r");
 
-        //Just print out the student number in that file
-        //System.out.println(FullList.listofsets.get(0).StudentNumber);
-        System.out.println(FullList.listofsets.get(0).FirstName);
-        System.out.println(FullList.listofsets.get(1).FirstName);
-        //System.out.println(FullList.listofsets.get(4).FirstName);
-        //System.out.println(FullList.listofsets.get(0).LastName);
-        //System.out.println(FullList.listofsets.get(0).PhoneNumber);
-        //System.out.println(FullList.listofsets.get(0).Gender);
-        //System.out.println(FullList.listofsets.get(0).Classification);
-        //System.out.println(FullList.listofsets.get(0).Major);
-        //System.out.println(FullList.listofsets.get(0).GPA);
-        //System.out.println(FullList.listofsets.get(1).StudentNumber);
-
-
-
-
+        
+        
 
         //Kick off the switch statement!
         Scanner input2 = new Scanner(System.in);
         Scanner input3 = new Scanner(System.in);
         Scanner input4 = new Scanner(System.in);
+        Scanner input5 = new Scanner(System.in);
         Menus WorkMenus = new Menus();
         int switcher = 0;
 
@@ -160,57 +149,132 @@ public class StudentDatabase {
 
             switch (switcher) {
                 //LOCATE A STUDENT BY STUDENT NUMBER
+                //add the error checking
                 case 1:
                     System.out.println("What student ID do you want to search"
                             + " for?");
                     int IN = input4.nextInt();
                     Student temp = FullList.GetWithId(IN);
-                    
-                    System.out.println("Number    Name     Phone Number"
+
+                    System.out.println("Number    Name         "
+                            + "      Phone Number"
                             + "    Gender     Class     Major     GPA");
-                    System.out.print(temp.StudentNumber);
+                    System.out.print(temp.StudentNumber + "    ");
                     System.out.print(temp.FirstName);
                     System.out.print(temp.LastName);
-                    System.out.print(temp.PhoneNumber);
-                    System.out.print(temp.Gender);
-                    System.out.print(temp.Major);
+                    System.out.print(temp.PhoneNumber + "        ");
+                    System.out.print(temp.Gender + "        ");
+                    System.out.print(temp.Classification + "         ");
+                    System.out.print(temp.Major + "      ");
                     System.out.print(temp.GPA);
+                    System.out.println();
                     break;
 
                 //PRINT OUT ALL STUDENTS BY CLASS 
                 case 2:
+                    System.out.println("What student class do you want "
+                            + "to list?");
+                    int classin = input5.nextInt();
+
+                    //Organize all the students by last name
+                    Collections.sort(FullList.listofsets,
+                            Student.Comparators.NAME);
+
+                    //Gotta have a header
+                    System.out.println("Number    Name     "
+                            + "          Phone Number"
+                            + "    Gender     Class     Major     GPA");
+
+                    //Scroll through all the students
+                    for (int i = 0; i < FullList.listofsets.size(); i++) {
+                        
+                            Student tempStudent = new Student();
+                            tempStudent = FullList.listofsets.get(i);
+                            
+                            //If the student is the right class
+                            //Print them out
+                            if (tempStudent.Classification == classin) {
+
+
+                            System.out.print(FullList.listofsets.get(i).StudentNumber
+                                    + "    ");
+                            System.out.print(FullList.listofsets.get(i).FirstName);
+                            System.out.print(FullList.listofsets.get(i).LastName);
+                            System.out.print(FullList.listofsets.get(i).PhoneNumber
+                                    + "        ");
+                            System.out.print(FullList.listofsets.get(i).Gender
+                                    + "        ");
+                            System.out.print(FullList.listofsets.get(i).Classification
+                                    + "        ");
+                            System.out.print(FullList.listofsets.get(i).Major
+                                    + "        ");
+                            System.out.print(FullList.listofsets.get(i).GPA);
+                            System.out.println();
+                        }
+                    }
+                    System.out.println("\r");
                     break;
 
                 //DISPLAY ALL STUDENTS BY STUDENT NUMBER  
                 case 3:
-                    break;
-
-                //DISPLAY ALL STUDENTS BY LAST NAME
-                case 4:
+                    //Sort everything by student number
+                    Collections.sort(FullList.listofsets, 
+                            Student.Comparators.STUDENT_NUMBER);
                     
-                    Collections.sort(FullList.listofsets, Student.Comparators.NAME);
-                    
-                    System.out.println("Number    Name     Phone Number"
+                    //Get a header
+                    System.out.println("Number    Name     "
+                            + "          Phone Number"
                             + "    Gender     Class     Major     GPA");
                     
-                    for(int i = 0; i<FullList.listofsets.size(); i++){
+                    //Scroll through them all and print out
+                    for (int i = 0; i < FullList.listofsets.size(); i++) {                      
                         System.out.print(FullList.listofsets.get(i).StudentNumber
                                 + "    ");
                         System.out.print(FullList.listofsets.get(i).FirstName);
                         System.out.print(FullList.listofsets.get(i).LastName);
                         System.out.print(FullList.listofsets.get(i).PhoneNumber
-                                + "    ");
+                                + "        ");
                         System.out.print(FullList.listofsets.get(i).Gender
-                                + "    ");
+                                + "        ");
                         System.out.print(FullList.listofsets.get(i).Classification
-                                + "    ");
+                                + "        ");
                         System.out.print(FullList.listofsets.get(i).Major
-                                + "    ");
+                                + "        ");
                         System.out.print(FullList.listofsets.get(i).GPA);
                         System.out.println();
-                        
+
                     }
-                    
+                    System.out.println("\r");
+                    break;
+
+                //DISPLAY ALL STUDENTS BY LAST NAME
+                case 4:
+
+                    Collections.sort(FullList.listofsets, Student.Comparators.NAME);
+
+                    System.out.println("Number    Name     "
+                            + "          Phone Number"
+                            + "    Gender     Class     Major     GPA");
+
+                    for (int i = 0; i < FullList.listofsets.size(); i++) {                      
+                        System.out.print(FullList.listofsets.get(i).StudentNumber
+                                + "    ");
+                        System.out.print(FullList.listofsets.get(i).FirstName);
+                        System.out.print(FullList.listofsets.get(i).LastName);
+                        System.out.print(FullList.listofsets.get(i).PhoneNumber
+                                + "        ");
+                        System.out.print(FullList.listofsets.get(i).Gender
+                                + "        ");
+                        System.out.print(FullList.listofsets.get(i).Classification
+                                + "        ");
+                        System.out.print(FullList.listofsets.get(i).Major
+                                + "        ");
+                        System.out.print(FullList.listofsets.get(i).GPA);
+                        System.out.println();
+
+                    }
+                    System.out.println("\r");
+
                     break;
 
                 //FIND THE AVERAGE GPA FOR ALL STUDENTS WITH A SPECIFIC MAJOR
@@ -253,52 +317,4 @@ public class StudentDatabase {
             }
         }
     }
-
-
 }
-//SCRAP CODE
-    /*
- while (line != null) {
- sb.append(line);
- sb.append('\n');
- line = br.readLine();
- } */
-
-/*        
- //FIRST NAME    
- //As long as we see characters we have the first name
- //UNTIL we see a second uppercase letter or hit column 14
- while(Character.isLetter(DataLine.charAt(i)) == true
- && i<14){
- FName = FName + Character.toString(DataLine.charAt(i));
-              
- //If the next character is Uppercase we've hit the last name
- //Signal a break
- if(Character.isUpperCase(DataLine.charAt(i+1))==true){
- break;
- }
- i++;
- }
- newKid.FirstName = FName;
-            
- */
-/*
- //The next 10 spaces are First Name
- //We need to account for names less than 10
- for(i = 5; i<14; i++){
- char hold = DataLine.charAt(i);
- Character.isLetter(hold);
-                
- FName = FName + Character.toString(DataLine.charAt(i));
- }
-            
- * */
-//String everything = sb.toString();
-//catchit = DataLine;
-//while(Character.isLetter(DataLine.charAt(i)) == true
-//               && i<=14)
-////If the next character is Uppercase we've hit the last name
-//Signal a break
-// if(Character.isUpperCase(DataLine.charAt(i+1))==true){
-//   break;
-             // }
