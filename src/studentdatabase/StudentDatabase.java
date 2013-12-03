@@ -18,7 +18,7 @@ public class StudentDatabase {
         System.out.println("Please be sure that the student information "
                 + "file is in the same directory as this program.");
         System.out.println("Let's start by reading in that file!");
-        System.out.println("(Hint: the included file is file.txt)\r");
+        System.out.println("(Hint: the included file is named file.txt)\r");
         System.out.println("Please enter the full name of the "
                 + "student information file:");
 
@@ -155,6 +155,9 @@ public class StudentDatabase {
                             + " for?");
                     int IN = input4.nextInt();
                     Student temp = FullList.GetWithId(IN);
+                    
+                    //If it's a valid student number
+                    if(temp != null){
 
                     System.out.println("Number    Name         "
                             + "      Phone Number"
@@ -168,6 +171,7 @@ public class StudentDatabase {
                     System.out.print(temp.Major + "      ");
                     System.out.print(temp.GPA);
                     System.out.println();
+                    }
                     break;
 
                 //PRINT OUT ALL STUDENTS BY CLASS 
